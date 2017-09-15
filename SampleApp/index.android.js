@@ -1,10 +1,19 @@
 import React from 'react' 
 
-import {AppRegistry,
+import {
+	StyleSheet,
+	AppRegistry,
 		View,
 		Text,
 		StatusBar		} from 'react-native'
 
+		
+		const styles = StyleSheet.create({
+			defaultText: {
+				fontSize: 22
+				
+			}
+		})
 class App extends React.Component {
 	render() {
 		
@@ -12,9 +21,9 @@ class App extends React.Component {
 		
 		<View> 
 		<StatusBar hidde={true} />
-		<Text> Book 1 </Text>
-		<Text> Book 2 </Text>
-		<Text> Book 3 a </Text>
+		<Text style={styles.defaultText}> Book 1 </Text>
+		<Text style={styles.defaultText}> Book 2 </Text>
+		<Text style={styles.defaultText}> Book 3 a </Text>
 		
 		</View>
 		
