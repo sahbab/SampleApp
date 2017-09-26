@@ -8,28 +8,14 @@ import {
 		StatusBar		} from 'react-native'
 
 		
-		const styles = StyleSheet.create({
-			defaultText: {
-				fontSize: 22,
-				padding: 10, 
-				margin : 5,
-				color: 'black' ,
-				borderWidth: 1 
-			},
-			
-			selectedText:{
-				backgroundColor : 'yellow' ,
-				color: 'blue',
-				fontWeight: 'bold'
-			}
-		})
+		
 class App extends React.Component {
 	render() {
 		
 		return(
 		
-		<View> 
-		<StatusBar hidde={true} />
+		<View style={styles.container} > 
+		<StatusBar hidden={true} />
 	<Text style={[styles.defaultText, styles.selectedText]} > Book 1 </Text>
 		<Text style={styles.defaultText}> Book 2 </Text>
 		<Text style={styles.defaultText}> Book 3 a </Text>
@@ -42,5 +28,30 @@ class App extends React.Component {
 	)
 	}	
 }
+
+const styles = StyleSheet.create({
+			defaultText: {
+				
+				fontSize: 22,
+				padding: 10, 
+				margin : 5,
+				color: 'black' ,
+				borderWidth: 1 ,
+				textAlign: 'center' 
+			},
+			
+			selectedText:{
+				
+				backgroundColor : 'yellow' ,
+				color: 'blue',
+				fontWeight: 'bold'
+			}
+			,container:{
+				flexDirection: 'column', 
+				justifyContent: 'flex-start',
+				
+				backgroundColor: '#DDD' 
+			}
+		})
 
 AppRegistry.registerComponent('SampleApp' , () => App ) 
