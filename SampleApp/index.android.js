@@ -1,57 +1,80 @@
-import React from 'react' 
-
+import React, { Component } from 'react'
 import {
-	StyleSheet,
-	AppRegistry,
-		View,
-		Text,
-		StatusBar		} from 'react-native'
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight
+} from 'react-native'
 
-		
-		
-class App extends React.Component {
-	render() {
-		
-		return(
-		
-		<View style={styles.container} > 
-		<StatusBar hidden={true} />
-	<Text style={[styles.defaultText, styles.selectedText]} > Book 1 </Text>
-		<Text style={styles.defaultText}> Book 2 </Text>
-		<Text style={styles.defaultText}> Book 3 a </Text>
-		<Text style={styles.defaultText}> Book 3 b </Text>
-		<Text style={styles.defaultText}> Book 3 c </Text>
-		<Text style={styles.defaultText}> Book 4 </Text>
-		<Text style={styles.defaultText}> Book 5 a </Text>
-		</View>
-		
-	)
-	}	
+export default class ColorList extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      backgroundColor: 'blue'
+    }
+    this.changeColor = this.changeColor.bind(this)
+  }
+
+  changeColor(backgroundColor) {
+    this.setState({backgroundColor})
+  }
+
+  render() {
+    const { backgroundColor } = this.state
+    return (
+      <View style={[styles.container,{backgroundColor}]}>
+
+        <TouchableHighlight style={styles.button}
+          onPress={() => this.changeColor('yellow')}
+          underlayColor="orange">
+
+          <View style={styles.row}>
+            <View style={[
+              styles.sample,
+              { backgroundColor: 'yellow'}
+            ]} />
+            <Text style={styles.text}>yellow</Text>
+          </View>
+
+        </TouchableHighlight>
+
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
-			defaultText: {
-				
-				fontSize: 22,
-				padding: 10, 
-				margin : 5,
-				color: 'black' ,
-				borderWidth: 1 ,
-				textAlign: 'center' 
-			},
-			
-			selectedText:{
-				
-				backgroundColor : 'yellow' ,
-				color: 'blue',
-				fontWeight: 'bold'
-			}
-			,container:{
-				flexDirection: 'column', 
-				justifyContent: 'flex-start',
-				
-				backgroundColor: '#DDD' 
-			}
-		})
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  button: {
+    margin: 10,
+    padding: 10,
+    borderWidth: 2,
+    borderRadius: 10,
+    alignSelf: 'stretch',
+    backgroundColor: 'rgba(255,255,255,.8)'
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  sample: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    margin: 5,
+    backgroundColor: 'white'
+  },
+  text: {
+    fontSize: 30,
+    margin: 5
+  }
+})
 
-AppRegistry.registerComponent('SampleApp' , () => App ) 
+AppRegistry.registerComponent('SampleApp', () => ColorList)
