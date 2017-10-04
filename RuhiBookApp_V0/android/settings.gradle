@@ -1,0 +1,3 @@
+rootProject.name = 'RuhiBookApp_V0'
+
+include ':app'
